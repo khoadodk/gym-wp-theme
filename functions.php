@@ -38,7 +38,7 @@ function gym_scripts(){
     endif;
 
     // Main Stylesheet
-    wp_enqueue_style('style', get_stylesheet_uri(), array('normalize', 'googlefont'), '1.0.0' );
+    wp_enqueue_style('style', get_stylesheet_uri(), array('normalize', 'googlefont'), '1.0.1' );
     
     wp_enqueue_script('jquery');
     

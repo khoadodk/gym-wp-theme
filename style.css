@@ -4,7 +4,7 @@
     Author: Khoa Do
     Author URI: https://www.khoado.dev
     Description: Wordpress Theme designed for gym
-    Version: 1.0.0
+    Version: 1.0.1
     License: GNU General Public License v2 or later
     License URI: http://www.gnu.org/licenses/gpl-2.0.html
     Tags: mobile, responsive, gym, fitness, yoga, class
@@ -232,8 +232,9 @@ img {
   }
 }
 
-/*----------CLASSES LIST------------*/
-.classes-list {
+/*----------CLASSES LIST / BLOG ------------*/
+.classes-list,
+.blog-entries {
   margin-top: 4rem;
 }
 .card {
@@ -258,8 +259,17 @@ img {
   font-weight: 600;
   font-size: 2rem;
 }
+.card .card-content .date-published {
+  color: var(--black);
+}
 @media (min-width: 768px) {
-  .classes-list {
+  .card .card-content .date-published {
+    color: var(--white);
+  }
+}
+@media (min-width: 768px) {
+  .classes-list,
+  .blog-entries {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -366,4 +376,35 @@ p.content-class {
     grid-column: 2 / 3;
     grid-row: 2 / 4;
   }
+}
+
+/*----------CATEGORIES------------*/
+.post-categories {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+@media (min-width: 768px) {
+  .post-categories {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    margin-top: 0;
+    z-index: 2;
+  }
+}
+.post-categories li {
+  margin-right: 2rem;
+}
+.post-categories li:last-of-type {
+  margin-right: 0;
+}
+.post-categories a {
+  border-radius: 0.5rem;
+  background-color: var(--primary);
+  padding: 0.5rem 2rem;
+  color: var(--darkGray);
+  font-size: 2.2rem;
+  font-family: var(--mainFont);
+  color: var(--white);
 }
