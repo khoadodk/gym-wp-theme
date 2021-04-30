@@ -4,7 +4,7 @@
     Author: Khoa Do
     Author URI: https://www.khoado.dev
     Description: Wordpress Theme designed for gym
-    Version: 1.0.5
+    Version: 1.0.6
     License: GNU General Public License v2 or later
     License URI: http://www.gnu.org/licenses/gpl-2.0.html
     Tags: mobile, responsive, gym, fitness, yoga, class
@@ -32,22 +32,37 @@ body {
 }
 
 /*----------- HEADINGS -----------*/
-h1,
-h2,
-h3 {
-  font-family: var(--mainFont);
-  margin: 0.5rem 0;
-  line-height: 1.2;
-}
 h1 {
-  font-size: 6rem;
+  font-size: 5rem;
 }
 h2 {
-  font-size: 4.8rem;
+  font-size: 4rem;
   color: var(--primary);
 }
 h3 {
-  font-size: 3.6rem;
+  font-size: 3rem;
+}
+p {
+  font-size: 1.6rem;
+}
+@media (min-width: 768px) {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--mainFont);
+    margin: 0.5rem 0;
+    line-height: 1.2;
+  }
+  h1 {
+    font-size: 6rem;
+  }
+  h2 {
+    font-size: 4.8rem;
+    color: var(--primary);
+  }
+  h3 {
+    font-size: 3.6rem;
+  }
 }
 
 /*---------- GLOBALS ----------*/
@@ -174,25 +189,28 @@ body.home .site-header {
 .main-menu {
   display: none;
 }
+.main-menu a {
+  font-size: 1.5rem;
+}
 @media (min-width: 768px) {
   .main-menu {
     display: flex;
   }
   .main-menu .menu {
     display: flex;
+    justify-content: center;
     align-items: center;
   }
   .main-menu li {
-    margin-right: 2rem;
+    margin-right: 3rem;
   }
   .main-menu li:last-of-type {
     margin-right: 0;
   }
   .main-menu a {
     color: var(--white);
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-family: var(--mainFont);
-    padding: 0.5rem 2rem;
   }
 }
 
@@ -286,7 +304,7 @@ body.home .site-header {
 .card .card-content p {
   color: var(--primary);
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 .card .card-content .date-published {
   color: var(--black);
