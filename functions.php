@@ -37,8 +37,13 @@ function gym_scripts(){
         wp_enqueue_style('lightboxcss', get_template_directory_uri() . '/css/lightbox.min.css', array(), '2.1.11');
     endif;
 
+    // bx slider
+    if(is_front_page()):
+        wp_enqueue_style('bxslidercss', 'https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css', array(), '4.2.12');
+    endif;
+
     // Main Stylesheet
-    wp_enqueue_style('style', get_stylesheet_uri(), array('normalize', 'googlefont'), '1.0.1' );
+    wp_enqueue_style('style', get_stylesheet_uri(), array('normalize', 'googlefont'), '1.0.5' );
     
     wp_enqueue_script('jquery');
     
@@ -47,6 +52,11 @@ function gym_scripts(){
 
     if(basename(get_page_template()) === 'gallery.php'):
         wp_enqueue_script('lightboxjs', get_template_directory_uri() . '/js/lightbox.min.js', array('jquery'), '1.0.10', true);
+    endif;
+
+    // bx slider
+    if(is_front_page()):
+        wp_enqueue_script('bxsliderjs', 'https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js', array('jquery'), '4.2.12', true);
     endif;
 
     wp_enqueue_script('scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '', true );
@@ -68,6 +78,9 @@ function gym_setup() {
 
     // Add featured image
     add_theme_support('post-thumbnails');
+
+    // SEO title
+    add_theme_support( 'title-tag' );
 }
 add_action( 'after_setup_theme', 'gym_setup' ); //When theme is activated and ready
 
@@ -88,3 +101,27 @@ function gym_widgets(){
 }
 
 add_action('widgets_init', 'gym_widgets');
+
+/*
+==============================
+        DISPLAY HERO IMG WITH CUSTOM FIELDS
+==============================
+*/
+function gym_hero_image(){
+    $front_page_id = get_option('page_on_front');
+    $image_id = get_field('hero_image', $front_page_id);
+    $imgUrl = $image_id['url'];
+
+    wp_register_style('custom', false);
+    wp_enqueue_style('custom');
+
+    $featured_image_css = "
+        body.home .site-header {
+            background-image : linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75) ), url($imgUrl);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    ";
+    wp_add_inline_style('custom', $featured_image_css);
+}
+add_action('init', 'gym_hero_image');
